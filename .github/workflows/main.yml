@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: setup Node
+        uses: actions/setup-node@v1
+        with: 
+          node-version: 10.x
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_ID: myburgerapp-a7b2b
