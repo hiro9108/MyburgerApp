@@ -12,7 +12,7 @@ const burger = (props) => {
         return arr.concat(el)
     });
     if (transformedIngredients.length === 0) {
-        transformedIngredients = <p>React Practice!</p>;
+        transformedIngredients = <p>React + Redux!</p>;
     }
     return (
         <div className={classes.Burger}>
