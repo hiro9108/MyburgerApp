@@ -1,4 +1,4 @@
-# URL - mock
+# URL
 https://myburgerapp-a7b2b.web.app/
 
 # Front-end  
